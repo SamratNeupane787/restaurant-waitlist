@@ -67,7 +67,6 @@ dequeueButton.addEventListener('click', () => {
   waitlistQueue.dequeue();
   updateWaitlist();
 });
-
 function updateWaitlist() {
   const tableBody = document.querySelector('#waitlist');
   tableBody.innerHTML = '';
@@ -85,12 +84,13 @@ function updateWaitlist() {
       const tableTimestamp = document.createElement('td');
       tableTimestamp.innerText = customer.timestamp.toLocaleTimeString();
 
+      const now = new Date();
+      const waitTime = customer.waitTime ?? 0;
+      const elapsed = (now - customer.timestamp) / 1000 / 60;
+      const totalWaitTime = waitTime + Math.max(elapsed - waitTime, 0);
+
       const tableWaitTime = document.createElement('td');
-      if (customer.waitTime === null) {
-        tableWaitTime.innerText = '-';
-      } else {
-        tableWaitTime.innerText = `${customer.waitTime} minutes`;
-      }
+      tableWaitTime.innerText = `${totalWaitTime.toFixed(2)} minutes`;
 
       tableRow.appendChild(tableName);
       tableRow.appendChild(tableTimestamp);
@@ -104,11 +104,7 @@ function updateWaitlist() {
       const now = new Date();
       const minutes = Math.floor((now - latestCustomer.timestamp) / 60000);
       latestCustomer.waitTime = minutes;
-      
-      // Calculate the number of parties ahead of the customer
-      const partiesAhead = queueItems.length - 1;
-      const waitTimeEstimate = (partiesAhead * waitlistQueue.getAverageWaitTime()) + latestCustomer.waitTime;
-      estimateTime.innerText = `${waitTimeEstimate.toFixed(2)} minutes`;
+      estimateTime.innerText = `${waitlistQueue.getAverageWaitTime().toFixed(2)} minutes`;
     }
   } else {
     estimateTime.innerText = '0 minutes';
