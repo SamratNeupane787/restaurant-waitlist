@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Restaurant Waitlist</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+<body class=" bg-[#151515]">
+	<div class="container-make text-center">
+		<h1 class=" pt-8 text-5xl text-white">Restaurant Waitlist</h1>
+    <h2  class=" pt-8 text-xl text-white">We Are Occupied Please Hold </h2>
+    <p  class=" pt-8 text-sm text-white">Thank You For Your Patience</p>
+		<div class="waitlist-container">
+			<div class="input-container pt-8 pb-8">
+				<input type="text" placeholder="Enter name" class="name-input rounded h-auto text-center">
+				<button class="add-button ml-8 rounded h-auto mx-5 px-5 py-1 bg-[#C6CA53]">Add to waitlist</button>
+			</div>
+			<table class=" pt-8">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Time added</th>
+						<th>Wait time</th>
+					</tr>
+				</thead>
+				<tbody id="waitlist">
+				</tbody>
+			</table>
+      <div class="dataentered pt-8 text-white text-xl">
+			<p>Estimated wait time: <span id="estimate-time">0 minutes</span></p>
+    </div>
+    <div class=" pt-8">
+			<button class="dequeue-button ml-8 rounded h-auto mx-5 px-5 py-1 bg-[#C6CA53]">Next Customer</button>
+    </div>
+		</div>
+	</div>
+
+	<script src="app.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
