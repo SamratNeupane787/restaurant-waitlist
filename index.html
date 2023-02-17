@@ -8,8 +8,8 @@
 </head>
 <body class=" bg-[#151515]">
 	<div class="container-make text-center">
-		<h1 class=" pt-8 text-5xl text-white">Restaurant Waitlist</h1>
-    <h2  class=" pt-8 text-xl text-white">We Are Occupied Please Hold </h2>
+		<h1 class=" pt-8 text-5xl text-white font-space">Restaurant Waitlist</h1>
+    <h2  class=" pt-8 text-xl text-white font-space">We Are Occupied Please Hold </h2>
     <p  class=" pt-8 text-sm text-white">Thank You For Your Patience</p>
 		<div class="waitlist-container">
 			<div class="input-container pt-8 pb-8">
@@ -56,6 +56,9 @@
   <script>
     tailwind.config = {
       theme: {
+		fontFamily:{
+			'space':['Source Code Pro', 'monospace']
+		},
         extend: {
           colors: {
             clifford: '#da373d',
